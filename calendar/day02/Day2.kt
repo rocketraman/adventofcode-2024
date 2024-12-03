@@ -11,6 +11,9 @@ class Day2 : Day() {
 
   override fun part2(input: Lines): Any {
     return parseInput(input).count { reports ->
+      // just brute force it by checking all the possible report sequences
+      // a cleaner way might be to use `fold` with a little accumulator data structure tracking the error count
+      // and previous value, and if it ends with error count > 1 then it fails
       val allReports = sequence {
         yield(reports)
         repeat(reports.size) { index -> yield(reports.toMutableList().apply { removeAt(index) }) }
