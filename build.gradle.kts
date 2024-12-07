@@ -23,6 +23,12 @@ sourceSets {
   }
 }
 
+kotlin {
+  compilerOptions {
+    freeCompilerArgs.add("-Xwhen-guards")
+  }
+}
+
 tasks {
   test {
     useJUnitPlatform()
