@@ -1,14 +1,23 @@
+@file:Suppress("FunctionName")
+
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.FieldSource
 import java.awt.Toolkit
 import java.awt.datatransfer.StringSelection
 import java.io.File
 import java.util.*
-import kotlin.time.ExperimentalTime
 import kotlin.time.measureTimedValue
 
 typealias Lines = List<String>
+typealias Example = Pair<String, Any>
 
 abstract class Day {
+  interface Examples {
+    val part1Examples: List<Example>
+    val part2Examples: List<Example>
+  }
+
   private val year = Calendar.getInstance().get(Calendar.YEAR)
   private val day by lazy {
     this::class.java.simpleName.removePrefix("Day")
@@ -36,6 +45,24 @@ abstract class Day {
 
   private fun pushToClipboard(data: String) {
     Toolkit.getDefaultToolkit().systemClipboard.setContents(StringSelection(data), null)
+  }
+
+  @ParameterizedTest
+  @FieldSource("part1Examples")
+  fun `part1 example`(example: Example) {
+    val input = example.first.trimIndent()
+    val expected = example.second
+    val actual = part1(input.lines())
+    assert(actual == expected)
+  }
+
+  @ParameterizedTest
+  @FieldSource("part2Examples")
+  fun `part2 example`(example: Example) {
+    val input = example.first.trimIndent()
+    val expected = example.second
+    val actual = part2(input.lines())
+    assert(actual == expected)
   }
 
   @Test

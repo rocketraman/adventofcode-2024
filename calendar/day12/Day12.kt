@@ -1,10 +1,81 @@
 package day12
 
 import Day
+import Example
 import Lines
 import day12.Day12.Direction.*
 
 class Day12 : Day() {
+  companion object : Examples {
+    override val part1Examples: List<Example> = listOf(
+      """
+      AAAA
+      BBCD
+      BBCC
+      EEEC
+      """ to 140,
+
+      """
+      OOOOO
+      OXOXO
+      OOOOO
+      OXOXO
+      OOOOO
+      """ to 772,
+
+      """
+      RRRRIICCFF
+      RRRRIICCCF
+      VVRRRCCFFF
+      VVRCCCJFFF
+      VVVVCJJCFE
+      VVIVCCJJEE
+      VVIIICJJEE
+      MIIIIIJJEE
+      MIIISIJEEE
+      MMMISSJEEE
+      """ to 1930,
+    )
+
+    override val part2Examples: List<Example> = listOf(
+      """
+      AAAA
+      BBCD
+      BBCC
+      EEEC
+      """ to 80,
+
+      """
+      OOOOO
+      OXOXO
+      OOOOO
+      OXOXO
+      OOOOO
+      """ to 436,
+
+      """
+      EEEEE
+      EXXXX
+      EEEEE
+      EXXXX
+      EEEEE
+      """ to 236,
+
+      """
+      RRRRIICCFF
+      RRRRIICCCF
+      VVRRRCCFFF
+      VVRCCCJFFF
+      VVVVCJJCFE
+      VVIVCCJJEE
+      VVIIICJJEE
+      MIIIIIJJEE
+      MIIISIJEEE
+      MMMISSJEEE
+      """ to 1206,
+    )
+  }
+
   enum class Direction {
     NORTH, SOUTH, WEST, EAST
   }

@@ -1,5 +1,10 @@
+@file:OptIn(ExperimentalKotlinGradlePluginApi::class)
+
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+
 plugins {
   kotlin("jvm") version "2.1.0"
+  kotlin("plugin.power-assert") version "2.1.0"
   id("com.github.jakemarsden.git-hooks") version "0.0.2"
 }
 
@@ -13,6 +18,7 @@ repositories {
 
 dependencies {
   implementation(kotlin("test-junit5"))
+  implementation("org.junit.jupiter:junit-jupiter-params:5.11.3")
 }
 
 sourceSets {
@@ -21,6 +27,10 @@ sourceSets {
     resources.srcDir(rootDir.resolve("calendar"))
     resources.exclude("**/*.kt")
   }
+}
+
+powerAssert {
+  includedSourceSets = listOf("main", "calendar")
 }
 
 kotlin {
