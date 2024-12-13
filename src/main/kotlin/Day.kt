@@ -14,8 +14,11 @@ typealias Example = Pair<String, Any>
 
 abstract class Day {
   interface Examples {
-    val part1Examples: List<Example>
-    val part2Examples: List<Example>
+    val EMPTY: List<Example?>
+      get() = listOf(null)
+
+    val part1Examples: List<Example?>
+    val part2Examples: List<Example?>
   }
 
   private val year = Calendar.getInstance().get(Calendar.YEAR)
@@ -49,7 +52,8 @@ abstract class Day {
 
   @ParameterizedTest
   @FieldSource("part1Examples")
-  fun `part1 example`(example: Example) {
+  fun `part1 example`(example: Example?) {
+    if (example == null) return
     val input = example.first.trimIndent()
     val expected = example.second
     val actual = part1(input.lines())
@@ -58,7 +62,8 @@ abstract class Day {
 
   @ParameterizedTest
   @FieldSource("part2Examples")
-  fun `part2 example`(example: Example) {
+  fun `part2 example`(example: Example?) {
+    if (example == null) return
     val input = example.first.trimIndent()
     val expected = example.second
     val actual = part2(input.lines())
