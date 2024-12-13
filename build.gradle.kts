@@ -36,6 +36,7 @@ powerAssert {
 kotlin {
   compilerOptions {
     freeCompilerArgs.add("-Xwhen-guards")
+    freeCompilerArgs.add("-Xdebug")
   }
 }
 
