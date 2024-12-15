@@ -30,7 +30,7 @@ sourceSets {
 }
 
 powerAssert {
-  includedSourceSets = listOf("main", "calendar")
+  includedSourceSets = listOf("main", "test")
 }
 
 kotlin {
